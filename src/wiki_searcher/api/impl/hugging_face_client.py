@@ -1,12 +1,7 @@
 import logging
 
-from huggingface_hub import (
-    InferenceClient,
-)
-from huggingface_hub.errors import (
-    HfHubHTTPError,
-    RepositoryNotFoundError,
-)
+from huggingface_hub import InferenceClient
+from huggingface_hub.errors import HfHubHTTPError, RepositoryNotFoundError,
 
 from wiki_searcher.api.client import Client, ClientError
 from wiki_searcher.api.parameters import Parameters
