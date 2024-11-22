@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "wiki-searcher-demo"
+version = "0.1.0"
+description = ""
+authors = ["Anastasia Margolina <margoanastasija27@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "wiki_searcher"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transformers = "^4.46.2"
+gradio = "^5.6.0"
+wikipedia = "^1.4.0"
+yarl = "^1.17.2"
+wikipedia-api = "^0.7.1"
+pydantic-settings = "^2.6.1"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.13.0"
+ruff = "^0.7.4"
+
+[tool.mypy]
+files = ["src/"]
+strict = true
+plugins = [
+    "pydantic.mypy",
+]
+enable_error_code = [
+    "possibly-undefined",
+]
+
+[[tool.mypy.overrides]]
+module = ["wikipediaapi.*", "huggingface_hub.*", "wikipedia.*", "gradio.*"]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
